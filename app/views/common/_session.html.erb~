@@ -1,0 +1,10 @@
+
+<% if admin_signed_in? %>
+  <p>Hello <%= current_admin.email %><br />
+  <%= button_to 'Sign out', destroy_admin_session_path, :method => :delete , :class => :destroy %></p>
+<% else %>
+  <p>
+    <%= link_to 'Register', new_admin_registration_path %> |
+    <%= link_to 'Sign in', new_admin_session_path %>
+  </p>
+<% end %>
