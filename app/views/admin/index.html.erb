@@ -1,1 +1,17 @@
 <h1> hello </h1>
+
+<% if admin_signed_in? %>
+<%= form_tag :action => 'post_tweet' do %>
+
+<p>
+
+Post Your tweet here :  <br />
+<%= text_field_tag :tweet %>
+</p>
+
+<p>
+<%= submit_tag 'Tweet it!' %>
+</p>
+
+<% end %>
+<% end %>

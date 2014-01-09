@@ -1,6 +1,7 @@
 
 <% if admin_signed_in? %>
-  <p>Hello <%= current_admin.email %><br />
+  <p>Hello <%= current_admin.email %> <br /> You are user number <%=current_admin.id %> <br />
+
   <%= button_to 'Sign out', destroy_admin_session_path, :method => :delete , :class => :destroy %></p>
 <% else %>
   <p>

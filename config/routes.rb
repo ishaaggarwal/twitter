@@ -1,6 +1,10 @@
 App2::Application.routes.draw do
 
+  get '/admin/ ' => 'admin#post_tweet'
+  #get 'admin#Post_tweet' => 'admin#index'
+  resources :admin
   devise_for :admins
+ 
 
  #devise_for :admins do get '/admins/sign_out' => 'devise/sessions#destroy' end
 
