@@ -1,0 +1,9 @@
+<% tweets.each do |c| %>
+  <% if flag %> 
+    <%= c.admin.email %> Posted : <br />
+  <% end %>
+  <%= c.content %> <br /> 
+
+<%= time_ago_in_words(c.created_at) %> Ago <br /> <br/>
+
+<% end %>    

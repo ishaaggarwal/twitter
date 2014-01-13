@@ -6,7 +6,9 @@ class Admin < ActiveRecord::Base
 
 
    has_many :follows
+   has_many :tweets
   # Setup accessible (or protected) attributes for your model
+  default_scope -> { order('created_at DESC') }
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 

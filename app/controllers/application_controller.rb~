@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
- 
-def post_tweet
-end
+before_filter :authenticate_admin! 
 
+
+
+
+
+	
 end

@@ -1,8 +1,21 @@
 App2::Application.routes.draw do
 
-  get '/admin/ ' => 'admin#post_tweet'
+  #post '/admin/ ' => 'admin#post_tweet'
   #get 'admin#Post_tweet' => 'admin#index'
-  resources :admin
+  resources :admin do
+    post 'post_tweet', :on => :collection
+  end
+
+  resources :profile do
+   get 'follow_me', :on => :member
+   get 'unfollow_me', :on => :member
+ 
+  end
+  
+ 
+
+  #resources :profile
+  
   devise_for :admins
  
 

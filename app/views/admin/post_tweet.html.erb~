@@ -1,1 +1,12 @@
-<h1> my tweet pagee!!!!</h1>
+<h1> My Tweets</h1>
+
+<% @tweet_all.each do |c| %>
+<p>
+<%= c.content %> <br />
+
+<% end %>
+
+<!--%= @tweet.content %> <br /-->
+
+
+

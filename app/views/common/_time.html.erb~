@@ -1,0 +1,23 @@
+<% tweets.each do |c| %>
+  <% if flag %> 
+    <%= c.admin.email %> Posted : <br />
+  <% end %>
+  <%= c.content %> <br /> 
+  <% @time= Time.now - c.created_at.to_time %> 
+  <% @time_diff= ((@time.to_f)/3600) %>
+  <% @time_diff_mins = (@time_diff * 60).to_i %>
+  <% if  @time_diff > 23 %>
+    Posted : <%= ((@time_diff)/24 ).to_i %> Days Ago   <br/> <br />
+  <% else %>
+          <% if @time_diff < 23 and @time_diff_mins < 60 and @time_diff_mins > 0 %>
+          Posted : <%= @time_diff_mins %> Minutes Ago   <br/> <br />
+          <% end %>
+          <% if @time_diff_mins > 60 and @time_diff <23 %>
+          Posted : <%= @time_diff).to_i %> Hours Ago   <br/> <br />
+          <% end %>
+          <% if @time_diff_mins <1 %>
+           Posted : <%= @time_diff_mins *60 %> Seconds Ago   <br/> <br />
+          <% end %>
+          
+  <% end %> 
+<% end %>    

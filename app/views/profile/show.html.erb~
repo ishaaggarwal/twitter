@@ -1,0 +1,29 @@
+<% if !(@same_user) %>
+
+<h1>Welcome to the profile of <%= @email.email %> </h1>
+
+<% else %>
+
+
+<h1>My Profile</h1>
+<% end %>
+
+
+	<% @flag1= false %>
+	<%= render partial: 'common/tweet', locals: {tweets: @tweets , flag: @flag1 } %>
+
+
+<% if !(@same_user) and @flag.blank? %>
+<%= link_to 'Follow me!!' , follow_me_profile_path(:id=> @id, :blah => 32) %>
+
+<% end %>
+
+
+
+<% if !(@same_user) and !(@flag.blank?) %>
+<%= link_to 'Unfollow' , unfollow_me_profile_path(:id => @id) %>
+<!--%= link_to 'Unfollow' , admin#index %-->
+<% end %>
+
+
+

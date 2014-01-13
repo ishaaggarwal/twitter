@@ -1,6 +1,7 @@
 
+<%= link_to 'HOME' , root_path %>
 <% if admin_signed_in? %>
-  <p>Hello <%= current_admin.email %> <br /> You are user number <%=current_admin.id %> <br />
+  <p>Hello <%= current_admin.email %> <br />
 
   <%= button_to 'Sign out', destroy_admin_session_path, :method => :delete , :class => :destroy %></p>
 <% else %>

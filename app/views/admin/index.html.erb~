@@ -1,16 +1,31 @@
-<h1> hello </h1>
 
 <% if admin_signed_in? %>
-<%= form_tag :action => 'post_tweet' do %>
+  <%= link_to 'My Profile' ,  profile_path(:id=>current_admin.id) %>
+  <%= form_tag 'admin/post_tweet' do %>
+  <p>
+      Post Your tweet here :  <br />
+      <%= text_field_tag :tweet %>
+  </p>
 
-<p>
+  <p>
+      <%= submit_tag 'Tweet it!' %>
+  </p>
 
-Post Your tweet here :  <br />
-<%= text_field_tag :tweet %>
-</p>
+  <% end %>
 
-<p>
-<%= submit_tag 'Tweet it!' %>
-</p>
+  <% @users.each do |c| %>
 
+  <%= link_to c.email , profile_path(:id => c.id) %> <br />
+  <% end %>
+
+  <h3> Tweets : </h3>
+    <% @flag=true %>
+    <%= render partial: 'common/time', locals: {tweets: @tweet_all , flag: @flag  } %>
+  
+
+
+  
 <% end %>
+
+
+
