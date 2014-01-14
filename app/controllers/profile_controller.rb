@@ -15,8 +15,9 @@ def follow_me
  @id=params[:id]
  
  @follow=Follow.create(:admin_id => @current  , :following_id =>  @id)
+ @success=true;
 # redirect_to action: ' profile_path(:id'=> @current) 
- redirect_to profile_path(:id => @id )
+ redirect_to profile_path(:id => @id)
 
 end
 

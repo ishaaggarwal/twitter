@@ -7,8 +7,7 @@ def index
   @follow_id=Admin.where(id: (Follow.joins("JOIN tweets ON tweets.admin_id=follows.admin_id AND follows.admin_id = #@id ").pluck('following_id'))).pluck('id')
   # all ids for which tweets are to be found
   @id_all= @follow_id + [@id]
-
- # @tweet_all= Admin.find_all_by_id(@id_all)
+  #All the tweets to be displayed on homepage
   @tweet_all = Tweet.where(:admin_id => @id_all)
 
   

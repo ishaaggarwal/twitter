@@ -7,7 +7,7 @@ def show
  @current= current_admin.id
  @id_int= @id.to_i
  @same_user= (@current == @id_int)
- @flag=Follow.where(:admin_id => @current  , :following_id =>  @id).blank?
+ @flag=Follow.where(:admin_id => @current  , :following_id =>  @id)
 end
 
 def follow_me
@@ -15,8 +15,9 @@ def follow_me
  @id=params[:id]
  
  @follow=Follow.create(:admin_id => @current  , :following_id =>  @id)
+ @success=true;
 # redirect_to action: ' profile_path(:id'=> @current) 
- redirect_to profile_path(:id => @id )
+ redirect_to profile_path(:id => @id , :success => @success)
 
 end
 

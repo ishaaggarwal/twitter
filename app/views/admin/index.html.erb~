@@ -1,28 +1,26 @@
-
+<div id="other">
 <% if admin_signed_in? %>
-  <%= link_to 'My Profile' ,  profile_path(:id=>current_admin.id) %>
   <%= form_tag 'admin/post_tweet' do %>
-  <p>
-      Post Your tweet here :  <br />
+     <h4>Post Your tweet here : </h4> <br />
       <%= text_field_tag :tweet %>
-  </p>
-
-  <p>
       <%= submit_tag 'Tweet it!' %>
-  </p>
-
   <% end %>
 
-  <% @users.each do |c| %>
-
+<br /> 
+<h3> Other Users : </h3>
+<% @users.each do |c| %>
   <%= link_to c.email , profile_path(:id => c.id) %> <br />
-  <% end %>
 
-  <h3> Tweets : </h3>
-    <% @flag=true %>
-    <%= render partial: 'common/time', locals: {tweets: @tweet_all , flag: @flag  } %>
-  
 
+
+<% end %>
+</div>
+
+<div id="tweets">
+<h3> Tweets : </h3>
+<% @flag=true %>
+<%= render partial: 'common/tweet', locals: {tweets: @tweet_all , flag: @flag  } %>
+</div>
 
   
 <% end %>
