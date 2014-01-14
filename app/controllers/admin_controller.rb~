@@ -4,9 +4,11 @@ def index
   @id = current_admin.id
 
   # ids of users I am following
-  @follow_id=Admin.where(id: (Follow.joins("JOIN tweets ON tweets.admin_id=follows.admin_id AND follows.admin_id = #@id ").pluck('following_id'))).pluck('id')
+  #@follow_id=Admin.where(id: (Follow.joins("JOIN tweets ON tweets.admin_id=follows.admin_id AND follows.admin_id = #@id ").pluck('following_id'))).pluck('id')
+
+  @follow_id=Follow.joins("JOIN admins ON admins.id=follows.admin_id AND follows.admin_id= #@id").pluck('following_id')
   # all ids for which tweets are to be found
-  @id_all= @follow_id + [@id]
+  @id_all= @follow_id + [@id.to_i]
   #All the tweets to be displayed on homepage
   @tweet_all = Tweet.where(:admin_id => @id_all)
   @users= Admin.find(:all, :conditions => ['id not in (?)', @id ])
@@ -16,21 +18,14 @@ end
  def post_tweet
   @id = current_admin.id
   @content = params[:tweet]
-   
-
   @error=false
   @tweet=Tweet.create(admin_id: @id , content: @content)
     if (!(@tweet.valid?)) 
        @error=true
-      
-     
     end
 
    redirect_to root_path(:error => @error)
 
  end
-
-
-
 
 end
