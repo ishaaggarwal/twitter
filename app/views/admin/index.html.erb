@@ -2,9 +2,16 @@
 <% if admin_signed_in? %>
   <%= form_tag 'admin/post_tweet' do %>
      Post Your tweet here :<br />
-      <%= text_field_tag :tweet %>
-      <%= submit_tag 'Tweet it!' %>
+      <%= text_area_tag :tweet , nil , rows:1 , cols:40  %><br />
+      <div align="center"> <%= submit_tag 'Tweet it!' %></div>
+      
   <% end %>
+
+<p style="text-align:right">
+<% if params[:error] %>
+Invalid tweet!!! Post Again!!
+<% end %>
+</p>
 
 <br /> 
 <h3> Other Users : </h3>
@@ -17,7 +24,7 @@
 </div>
 
 <div id="tweets">
-<h3> Tweets : </h3>
+<h3>Latest Tweets : </h3>
 <% @flag=true %>
 <%= render partial: 'common/tweet', locals: {tweets: @tweet_all , flag: @flag  } %>
 </div>

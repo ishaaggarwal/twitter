@@ -8,9 +8,8 @@
 <h2>My Profile</h2>
 <% end %>
 
-
-	<% @flag1= false %>
-	<%= render partial: 'common/tweet', locals: {tweets: @tweets , flag: @flag1 } %>
+<% @flag1= false %>
+<%= render partial: 'common/tweet', locals: {tweets: @tweets , flag: @flag1 } %>
 
 
 <% if !(@same_user) and @flag.blank? %>

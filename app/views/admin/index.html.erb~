@@ -1,10 +1,17 @@
 <div id="other">
 <% if admin_signed_in? %>
   <%= form_tag 'admin/post_tweet' do %>
-     <h4>Post Your tweet here : </h4> <br />
-      <%= text_field_tag :tweet %>
-      <%= submit_tag 'Tweet it!' %>
+     Post Your tweet here :<br />
+      <%= text_area_tag :tweet , nil , rows:1 , cols:40  %><br />
+      <div align="center"> <%= submit_tag 'Tweet it!' %></div>
+      
   <% end %>
+
+<p style="text-align:right">
+<% if params[:error] %>
+Invalid tweet!!! Post Again!!
+<% end %>
+</p>
 
 <br /> 
 <h3> Other Users : </h3>

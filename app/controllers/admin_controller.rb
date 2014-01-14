@@ -9,22 +9,23 @@ def index
   @id_all= @follow_id + [@id]
   #All the tweets to be displayed on homepage
   @tweet_all = Tweet.where(:admin_id => @id_all)
-
-  
   @users= Admin.find(:all, :conditions => ['id not in (?)', @id ])
 
 end
 
  def post_tweet
   @id = current_admin.id
-  @content = params[:tweet] 
+  @content = params[:tweet]
+   
+
+  @error=false
   @tweet=Tweet.create(admin_id: @id , content: @content)
-	# redirect to index
-  redirect_to action: 'index'
- #@tweet_all=Tweet.find_all_by_admin_id(@id)
+    if (!(@tweet.valid?)) 
+       @error=true
+    end
+
+   redirect_to root_path(:error => @error)
+
  end
-
-
-
 
 end
