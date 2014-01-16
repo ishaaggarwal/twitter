@@ -1,5 +1,6 @@
 App2::Application.routes.draw do
 
+  mount Twitter::Engine =>  "/app2"
   #post '/admin/ ' => 'admin#post_tweet'
   #get 'admin#Post_tweet' => 'admin#index'
   resources :admin do
@@ -9,7 +10,7 @@ App2::Application.routes.draw do
   resources :profile do
    get 'follow_me', :on => :member
    get 'unfollow_me', :on => :member
-  # get 'unfollow_me' => 'admin#index'
+ 
   end
   
  

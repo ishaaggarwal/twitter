@@ -19,12 +19,16 @@ end
   @content = params[:tweet]
   @error=false
   @tweet=Tweet.create(admin_id: @id , content: @content)
-    if (!(@tweet.valid?)) 
-       @error=true
-    end
+  @error=true unless @tweet.valid?
 
    redirect_to root_path(:error => @error)
 
  end
 
 end
+
+
+# Styling (app + engine + devise pages)
+# Inherit parent layout from engine
+# Rspec... Testing
+  

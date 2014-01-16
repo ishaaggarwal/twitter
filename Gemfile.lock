@@ -1,3 +1,9 @@
+PATH
+  remote: /home/ubuntu/twitter
+  specs:
+    twitter (0.0.1)
+      rails (~> 3.2.13)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -123,4 +129,5 @@ DEPENDENCIES
   mysql2
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
+  twitter!
   uglifier (>= 1.0.3)

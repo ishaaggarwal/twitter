@@ -1,5 +1,6 @@
 App2::Application.routes.draw do
 
+  mount Twitter::Engine =>  "/app2"
   #post '/admin/ ' => 'admin#post_tweet'
   #get 'admin#Post_tweet' => 'admin#index'
   resources :admin do
@@ -80,3 +81,6 @@ App2::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 end
+
+# Rspec
+
